@@ -29,19 +29,10 @@ endif()
 # Print useful information
 message( STATUS "CMake version ${CMAKE_VERSION}" )
 
-cmake_minimum_required(VERSION 2.8.6)
-if (${CMAKE_VERSION} VERSION_LESS "3.0.0")
-  project(cryptopp)
-  set(cryptopp_VERSION_MAJOR 8)
-  set(cryptopp_VERSION_MINOR 5)
-  set(cryptopp_VERSION_PATCH 0)
-else ()
-  cmake_policy(SET CMP0048 NEW)
-  project(cryptopp VERSION 8.3.0)
-  if (NOT ${CMAKE_VERSION} VERSION_LESS "3.1.0")
-    cmake_policy(SET CMP0054 NEW)
-  endif ()
-endif ()
+cmake_minimum_required(VERSION 3.7)
+project(cryptopp VERSION 8.3.0)
+cmake_policy(SET CMP0048 NEW)
+cmake_policy(SET CMP0103 OLD)
 
 # Need to set SRC_DIR manually after removing the Python library code.
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
